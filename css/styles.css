@@ -8,14 +8,38 @@
 }
 
 #suggestion img {
-  width: 100%;
+  width: 75%;
   margin: 0 auto;
+  border: 5px solid black;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 60px;
+  font-family: lobster;
+  text-decoration: underline;
 }
 
-button {
+body {
+  background-color: skyblue;
+}
+
+.question-group {
+  width: 50%;
+  margin: 0 auto;
+  border: 3px solid black;
+}
+
+.question-group h3 {
+  font-family: lobster;
+}
+
+.question-group button {
   margin-top: 20px;
+}
+
+.red-text {
+  font-size: 16pt;
+  font-style: italic;
+  color: red;
 }

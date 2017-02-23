@@ -3,6 +3,7 @@
   <head>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/scripts.js"></script>
     <title>Vacation Suggester</title>
@@ -10,70 +11,79 @@
   <body>
     <div class="container">
       <h1>The Magical Vacation Suggester!</h1>
-      <form id="q1">
+      <form id="q1" class="question-group well">
         <div class="form-group" id="question1">
           <h3>Question 1:</h3>
           <label for="name">What is your name?</label>
-          <input type="text" class="form-control" id="name">
+          <input type="text" class="form-control" id="name" required>
           <button type="submit" class="btn btn-info" id="q1-submit">Next Question</button>
         </div>
       </form>
-      <form id="q2">
+      <form id="q2" class="question-group well">
         <div class="form-group" id="question2">
           <h3>Question 2:</h3>
           <label for="season">What is your favorite time of year?</label>
-          <select class="form-control" id="season">
-            <option>Pick one</option>
+          <select class="form-control" id="season" required>
+            <option value="1">Pick one</option>
             <option value="6">Winter</option>
-            <option value="1">Spring</option>
+            <option value="3">Spring</option>
             <option value="2">Summer</option>
             <option value="8">Fall</option>
           </select>
           <button type="submit" class="btn btn-info" id="q2-submit">Next Question</button>
         </div>
+        <div id="q2-alert" class="red-text">
+
+        </div>
       </form>
-      <form id="q3">
+      <form id="q3" class="question-group well">
         <div class="form-group" id="question3">
           <h3>Question 3:</h3>
           <label for="dob">What is your birthday?</label>
-          <input type="date" class="form-control" id="dob">
+          <input type="date" class="form-control" id="dob" required>
           <button type="submit" class="btn btn-info" id="q3-submit">Next Question</button>
         </div>
       </form>
-      <form id='q4'>
+      <form id='q4' class="question-group well">
         <div class="form-group" id="question4">
           <h3>Question 4:</h3>
           <label>Which of these activities sounds the best?</label>
           <select class="form-control" id="activities">
-            <option>Pick one</option>
-            <option value="1">Beach Lounging</option>
+            <option value="1">Pick one</option>
+            <option value="2">Beach Lounging</option>
             <option value="4">Snorkeling</option>
             <option value="6">Sailing</option>
           </select>
           <button type="submit" class="btn btn-info" id="q4-submit">Next Question</button>
         </div>
-      </form>  
-      <form id="q5">
+        <div id="q4-alert" class="red-text">
+
+        </div>
+      </form>
+      <form id="q5" class="question-group well">
         <div class="form-group" id="question5">
           <h3>Question 5:</h3>
-          <label>which is best: the beach, the mountain or the city?</label>
+          <label>Which type of location do you prefer; the beach, the mountain or the city?</label>
           <select class="form-control" id="travel">
-            <option>Pick one</option>
-            <option value="1">Beach</option>
-            <option value="4">Mountain</option>
-            <option value="6">City</option>
+            <option value="1">Pick one</option>
+            <option value="2">Mountain</option>
+            <option value="4">City</option>
+            <option value="6">Beach</option>
           </select>
           <button type="submit" class="btn btn-info" id="q5-submit">Vacation!</button>
+        </div>
+        <div id="q5-alert" class="red-text">
+
         </div>
       </form>
       <div id="suggestion">
         <div id="vacation1">
-          <h3><span class="user-name"></span>, you should vacation in Thailand!</h3>
-          <img src="img/thailand.jpg" alt="Beach in Thailand">
+          <h3><span class="user-name">, you should vacation in San Francisco!</span></h3>
+          <img src="img/sanfrancisico.jpg" alt="Golden Gate Bridge">
         </div>
         <div id="vacation2">
-          <h3><span class="user-name"></span>, you should vacation in San Francisco!</h3>
-          <img src="img/sanfrancisco.jpg" alt="Golden Gate Bridge">
+          <h3><span class="user-name"></span>, you should vacation in Thailand!</h3>
+          <img src="img/thailand.jpg" alt="Beach in Thailand">
         </div>
         <div id="vacation3">
           <h3><span class="user-name"></span>, you should vacation in the Florida Keys!</h3>
