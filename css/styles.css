@@ -1,0 +1,21 @@
+#q2, #q3, #q4, #q5 {
+  display: none;
+}
+
+#vacation1, #vacation2, #vacation3  {
+  display: none;
+  text-align: center;
+}
+
+#suggestion img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  margin-top: 20px;
+}
