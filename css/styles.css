@@ -6,11 +6,13 @@
   width: 75%;
   margin: 0 auto;
   border: 5px solid black;
+  margin-top: 15px;
+  margin-bottom: 30px;
 }
 
 #redo {
   display: none;
-  margin-top: 30px;
+  border: 1px solid black;
 }
 
 h1 {

@@ -58,6 +58,7 @@ $(document).ready(function() {
       $("#q5-alert").text("Please make a selection");
     } else {
       $("#q5").hide();
+      $("#redo").show();
       if (totalPoints <= 22) {
         $("#vacation1").show();
       } else if (totalPoints >= 23 && totalPoints <=26) {
@@ -68,14 +69,31 @@ $(document).ready(function() {
         $("#vacation4").show();
       }
     }
-    $("#redo").show();
     $(".user-name").text(q1Input);
     event.preventDefault();
   });
 
   $("#redo").click(function() {
     $(".vacation").hide();
+    $(".red-text").hide();
     $("#q1").show();
     $("#redo").hide();
+
+    //the loops below are to clear the five form entries when the user clicks the redo button
+    //how might i consolidate the two loops into a single forEach using a single if/else?
+          //
+    var questions = ["#name", "#dob"];
+    questions.forEach(function(question) {
+      if ($(question)) {
+        $(question).val("");
+      }
+    });
+
+    var selectQuestions = ["#season", "#color", "#activity"]
+    selectQuestions.forEach(function(selectQuestion) {
+      if ($(selectQuestion) !== 1) {
+        $(selectQuestion).val(1);
+      }
+    });
   });
 });
