@@ -2,15 +2,15 @@
   display: none;
 }
 
-#vacation1, #vacation2, #vacation3  {
-  display: none;
-  text-align: center;
-}
-
 #suggestion img {
   width: 75%;
   margin: 0 auto;
   border: 5px solid black;
+}
+
+#redo {
+  display: none;
+  margin-top: 30px;
 }
 
 h1 {
@@ -22,6 +22,11 @@ h1 {
 
 body {
   background-color: skyblue;
+}
+
+.vacation  {
+  display: none;
+  text-align: center;
 }
 
 .question-group {
@@ -39,7 +44,7 @@ body {
 }
 
 .red-text {
-  font-size: 16pt;
+  font-size: 14pt;
   font-style: italic;
   color: red;
 }
