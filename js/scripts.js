@@ -1,63 +1,39 @@
 $(document).ready(function() {
   $("select").children("option:first-child").hide();
-  //to hide the "Pick one" options from the DOM
+  //above: hide the "Pick one" options from the DOM while keeping them as placeholder text
 
-  $("#q1").submit(function(event) {
-    var input1 = $("#name").val();
-    if (input1 === "") {
-      $("#q1-alert").text("Please enter your name");
-    } else {
-      $("#q1").hide();
-      $("#q2").show();
-    }
-    event.preventDefault();
+  var formNumbers = ["1", "2", "3", "4"]
+  //above: should this line be above the (function(){}) or does it matter? also see comment on line 64
+  formNumbers.forEach(function(formNumber ) {
+    $("#form" + formNumber).submit(function(event) {
+      var input = $("#q" + formNumber).val();
+      if (input === "" || input === "1") {
+        $(".red-text").text("Please provide a valid answer")
+      //issue: after clicking "button#redo" this if statement no longer prints messages into ".red-text". The condition seems to work but the code is not being executed?
+      } else {
+        var formNumberVal = parseInt(formNumber);
+        var nextQuestionVal = formNumberVal += 1;
+        var nextQuestion = nextQuestionVal.toString();
+        $(".red-text").empty();
+        $("#form" + formNumber).hide();
+        $("#form" + nextQuestion).show();
+      }
+      event.preventDefault();
+    });
   });
+  //above: check question for invalid entry, hide answered question, show next question, repeat for questions 1-4
 
-  $("#q2").submit(function(event) {
-    var input2 = parseInt($("#season").val());
-    if (input2 === 1) {
-      $("#q2-alert").text("Please make a selection");
-    } else {
-      $("#q2").hide();
-      $("#q3").show();
-    }
-    event.preventDefault();
-  });
-
-  $("#q3").submit(function(event) {
-    var input3 = $("#dob").val();
-    if (input3 === "") {
-      $("#q3-alert").text("Please enter your date of birth");
-    } else {
-      $("#q3").hide();
-      $("#q4").show();
-    }
-    event.preventDefault();
-  });
-
-  $("#q4").submit(function(event) {
-    var input4 = parseInt($("#color").val());
-    if (input4 === 1) {
-      $("#q4-alert").text("Please make a selection");
-    } else {
-      $("#q4").hide();
-      $("#q5").show();
-    }
-    event.preventDefault();
-  });
-
-  $("#q5").submit(function(event) {
-    var q1Input = $("#name").val();
-    var q2Input = parseInt($("#season").val());
-    var q3Input = $("#dob").val();
-    var q4Input = parseInt($("#color").val());
-    var q5Input = parseInt($("#activity").val());
+  $("#form5").submit(function(event) {
+    var q1Input = $("#q1").val();
+    var q2Input = parseInt($("#q2").val());
+    var q4Input = parseInt($("#q4").val());
+    var q5Input = parseInt($("#q5").val());
     var totalPoints = (q2Input + q4Input + q5Input);
 
     if (q5Input === 1) {
-      $("#q5-alert").text("Please make a selection");
+      $(".red-text").text("Please provide a valid answer");
     } else {
-      $("#q5").hide();
+      $("#form5").hide();
       $("#redo").show();
       if (totalPoints <= 22) {
         $("#vacation1").show();
@@ -72,28 +48,18 @@ $(document).ready(function() {
     $(".user-name").text(q1Input);
     event.preventDefault();
   });
+  //above: determine and display proper vacation info
 
   $("#redo").click(function() {
     $(".vacation").hide();
     $(".red-text").hide();
-    $("#q1").show();
     $("#redo").hide();
-
-    //the loops below are to clear the five form entries when the user clicks the redo button
-    //how might i consolidate the two loops into a single forEach using a single if/else?
-          //
-    var questions = ["#name", "#dob"];
-    questions.forEach(function(question) {
-      if ($(question)) {
-        $(question).val("");
-      }
+    var formNumbers = ["1", "2", "3", "4", "5"];
+    formNumbers.forEach(function(formNumber) {
+      $("#form" + formNumber).trigger("reset");
     });
-
-    var selectQuestions = ["#season", "#color", "#activity"]
-    selectQuestions.forEach(function(selectQuestion) {
-      if ($(selectQuestion) !== 1) {
-        $(selectQuestion).val(1);
-      }
-    });
+    $("#form1").show();
   });
+  //above: hide vacation info, any error messages and "redo" button then reset forms 1-5 and show question 1
+  //is it okay to locally redefine a variable that has global scope? i.e. line 57 and line 5
 });
