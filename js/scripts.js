@@ -3,13 +3,12 @@ $(document).ready(function() {
   //above: hide the "Pick one" options from the DOM while keeping them as placeholder text
 
   var formNumbers = ["1", "2", "3", "4"]
-  //above: should this line be above the (function(){}) or does it matter? also see comment on line 64
+  //above: should this line be above the doc.ready function or does it matter? also see comment on line 63
   formNumbers.forEach(function(formNumber ) {
     $("#form" + formNumber).submit(function(event) {
       var input = $("#q" + formNumber).val();
       if (input === "" || input === "1") {
         $(".red-text").text("Please provide a valid answer")
-      //issue: after clicking "button#redo" this if statement no longer prints messages into ".red-text". The condition seems to work but the code is not being executed?
       } else {
         var formNumberVal = parseInt(formNumber);
         var nextQuestionVal = formNumberVal += 1;
@@ -34,7 +33,9 @@ $(document).ready(function() {
       $(".red-text").text("Please provide a valid answer");
     } else {
       $("#form5").hide();
+      $(".red-text").empty();
       $("#redo").show();
+      $(".user-name").text(q1Input);
       if (totalPoints <= 22) {
         $("#vacation1").show();
       } else if (totalPoints >= 23 && totalPoints <=26) {
@@ -45,14 +46,12 @@ $(document).ready(function() {
         $("#vacation4").show();
       }
     }
-    $(".user-name").text(q1Input);
     event.preventDefault();
   });
   //above: determine and display proper vacation info
 
   $("#redo").click(function() {
     $(".vacation").hide();
-    $(".red-text").hide();
     $("#redo").hide();
     var formNumbers = ["1", "2", "3", "4", "5"];
     formNumbers.forEach(function(formNumber) {
@@ -61,5 +60,5 @@ $(document).ready(function() {
     $("#form1").show();
   });
   //above: hide vacation info, any error messages and "redo" button then reset forms 1-5 and show question 1
-  //is it okay to locally redefine a variable that has global scope? i.e. line 57 and line 5
+  //is it okay to locally redefine a variable that has global scope? i.e. line 56 and line 5
 });
