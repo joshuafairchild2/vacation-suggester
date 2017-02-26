@@ -14,8 +14,8 @@ $(document).ready(function() {
         var nextQuestionVal = formNumberVal += 1;
         var nextQuestion = nextQuestionVal.toString();
         $(".red-text").empty();
-        $("#form" + formNumber).slideUp();
-        $("#form" + nextQuestion).slideDown();
+        $("#form" + formNumber).slideUp("fast");
+        $("#form" + nextQuestion).slideDown("slow");
       }
       event.preventDefault();
     });
@@ -32,18 +32,18 @@ $(document).ready(function() {
     if (q5Input === 1) {
       $(".red-text").text("Please provide a valid answer");
     } else {
-      $("#form5").slideUp();
+      $("#form5").slideUp("fast");
       $(".red-text").empty();
       $("#redo").slideDown();
       $(".user-name").text(q1Input);
       if (totalPoints <= 22) {
-        $("#vacation1").slideDown();
+        $("#vacation1").slideDown("slow");
       } else if (totalPoints >= 23 && totalPoints <=26) {
-        $("#vacation2").slideDown();
+        $("#vacation2").slideDown("slow");
       } else if (totalPoints >= 27 && totalPoints <= 31) {
-        $("#vacation3").slideDown();
+        $("#vacation3").slideDown("slow");
       } else if (totalPoints >= 32) {
-        $("#vacation4").slideDown();
+        $("#vacation4").slideDown("slow");
       }
     }
     event.preventDefault();
@@ -51,13 +51,13 @@ $(document).ready(function() {
   //above: check for valid entry, hide question 5, determine and display proper vacation info
 
   $("#redo").click(function() {
-    $(".vacation").slideUp();
-    $("#redo").slideUp();
+    $(".vacation").slideUp("fast");
+    $("#redo").slideUp("fast");
     var formNumbers = ["1", "2", "3", "4", "5"];
     formNumbers.forEach(function(formNumber) {
       $("#form" + formNumber).trigger("reset");
     });
-    $("#form1").slideDown();
+    $("#form1").slideDown("slow");
   });
   //above: hide vacation info and "redo" button, reset forms 1-5 and show question 1
   //is it okay to locally redefine/reuse a variable as i do in line 56? (original var @ line 5)
