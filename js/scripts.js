@@ -8,14 +8,14 @@ $(document).ready(function() {
     $("#form" + formNumber).submit(function(event) {
       var input = $("#q" + formNumber).val();
       if (input === "" || input === "1") {
-        $(".red-text").text("Please provide a valid answer")
+        $(".red-text").text("Please provide a valid answer");
       } else {
         var formNumberVal = parseInt(formNumber);
         var nextQuestionVal = formNumberVal += 1;
         var nextQuestion = nextQuestionVal.toString();
         $(".red-text").empty();
-        $("#form" + formNumber).hide();
-        $("#form" + nextQuestion).show();
+        $("#form" + formNumber).slideUp();
+        $("#form" + nextQuestion).slideDown();
       }
       event.preventDefault();
     });
@@ -32,33 +32,33 @@ $(document).ready(function() {
     if (q5Input === 1) {
       $(".red-text").text("Please provide a valid answer");
     } else {
-      $("#form5").hide();
+      $("#form5").slideUp();
       $(".red-text").empty();
-      $("#redo").show();
+      $("#redo").slideDown();
       $(".user-name").text(q1Input);
       if (totalPoints <= 22) {
-        $("#vacation1").show();
+        $("#vacation1").slideDown();
       } else if (totalPoints >= 23 && totalPoints <=26) {
-        $("#vacation2").show();
+        $("#vacation2").slideDown();
       } else if (totalPoints >= 27 && totalPoints <= 31) {
-        $("#vacation3").show();
+        $("#vacation3").slideDown();
       } else if (totalPoints >= 32) {
-        $("#vacation4").show();
+        $("#vacation4").slideDown();
       }
     }
     event.preventDefault();
   });
-  //above: determine and display proper vacation info
+  //above: check for valid entry, hide question 5, determine and display proper vacation info
 
   $("#redo").click(function() {
-    $(".vacation").hide();
-    $("#redo").hide();
+    $(".vacation").slideUp();
+    $("#redo").slideUp();
     var formNumbers = ["1", "2", "3", "4", "5"];
     formNumbers.forEach(function(formNumber) {
       $("#form" + formNumber).trigger("reset");
     });
-    $("#form1").show();
+    $("#form1").slideDown();
   });
-  //above: hide vacation info, any error messages and "redo" button then reset forms 1-5 and show question 1
-  //is it okay to locally redefine a variable that has global scope? i.e. line 56 and line 5
+  //above: hide vacation info and "redo" button, reset forms 1-5 and show question 1
+  //is it okay to locally redefine/reuse a variable as i do in line 56? (original var @ line 5)
 });
