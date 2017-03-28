@@ -1,9 +1,7 @@
 $(document).ready(function() {
   $("select").children("option:first-child").hide();
-  //above: hide the "Pick one" options from the DOM while keeping them as placeholder text
 
-  var formNumbers = ["1", "2", "3", "4"]
-  //above: should this line be above the doc.ready function or does it matter? also see comment on line 63
+  var formNumbers = ["1", "2", "3", "4"];
   formNumbers.forEach(function(formNumber ) {
     $("#form" + formNumber).submit(function(event) {
       var input = $("#q" + formNumber).val();
@@ -20,7 +18,6 @@ $(document).ready(function() {
       event.preventDefault();
     });
   });
-  //above: check question for invalid entry, hide answered question, show next question, repeat for questions 1-4
 
   $("#form5").submit(function(event) {
     var q1Input = $("#q1").val();
@@ -48,17 +45,12 @@ $(document).ready(function() {
     }
     event.preventDefault();
   });
-  //above: check for valid entry, hide question 5, determine and display proper vacation info
 
   $("#redo").click(function() {
-    $(".vacation").slideUp("fast");
-    $("#redo").slideUp("fast");
-    var formNumbers = ["1", "2", "3", "4", "5"];
-    formNumbers.forEach(function(formNumber) {
-      $("#form" + formNumber).trigger("reset");
+    $(".vacation, #redo").slideUp("fast");
+    $('form').each(function() {
+      $(this).trigger('reset');
     });
     $("#form1").slideDown("slow");
   });
-  //above: hide vacation info and "redo" button, reset forms 1-5 and show question 1
-  //is it okay to locally redefine/reuse a variable as i do in line 56? (original var @ line 5)
 });
